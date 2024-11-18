@@ -192,6 +192,47 @@ async function checkLoginStatus() {
     }
 }
 
+
+// Función para calcular la diferencia en días entre dos fechas
+function calcularNoches(fechaInicio, fechaFin) {
+    const inicio = new Date(fechaInicio);
+    const fin = new Date(fechaFin);
+    const diferencia = fin.getTime() - inicio.getTime();
+    return Math.ceil(diferencia / (1000 * 3600 * 24));
+}
+
+// Función para calcular y mostrar el precio total
+function calcularPrecioTotal() {
+    const checkIn = document.getElementById('check-in').value;
+    const checkOut = document.getElementById('check-out').value;
+    const precioPorNoche = 180; // Este valor deberá venir de tu API
+
+    if (checkIn && checkOut) {
+        const noches = calcularNoches(checkIn, checkOut);
+        const precioTotal = noches * precioPorNoche;
+
+        // Mostrar el div de cálculo
+        const divCalculo = document.getElementById('calcular-precio');
+        divCalculo.style.display = 'block';
+
+        // Actualizar los valores
+        document.getElementById('precio-por-noche').textContent = precioPorNoche;
+        document.getElementById('total-noches').textContent = noches;
+        document.getElementById('precio-total').textContent = precioTotal;
+    }
+}
+
+// Agregar event listeners para los inputs de fecha
+document.getElementById('check-in').addEventListener('change', calcularPrecioTotal);
+document.getElementById('check-out').addEventListener('change', calcularPrecioTotal);
+
+// Modificar el event listener del formulario
+document.getElementById('booking-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    calcularPrecioTotal();
+});
+
+
 // Función para cerrar sesión
 function logout() {
     localStorage.removeItem('userToken');
