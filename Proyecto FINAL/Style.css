@@ -236,6 +236,34 @@ nav:hover {
     margin: 10px 0;
 }
 
+/*div para el calculo del precio*/
+.price-summary {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.price-summary h3 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.price-summary p {
+    margin: 8px 0;
+    font-size: 16px;
+}
+
+.precio-total {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #ddd;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+
 .ubicacion-Alojamiento1,
 .ubicacion-Alojamiento {
     display: flex;
