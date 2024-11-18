@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Style.css">
+    
+    <title>Buscar Alojamientos - Hoteles Panamá</title>
+</head>
+<body>
+    <!-- Navbar consistente con la página principal -->
+    <nav>
+        <div class="navbar-container">
+            <a href="PagInicio.html" class="navbar-logo">
+                <h1>Alojamientos Panamá</h1>
+            </a>
+            <div class="navbar-menu">
+                <ul>
+                    <li><a href="PagInicio.html">Inicio</a></li>
+                    <li><a href="#">Buscar Alojamientos</a></li>
+                    <li id="myReservations" style="display: none;"><a href="mis-reservas.html">Mis reservas</a></li>
+                </ul>
+                <button class="navbar-button">
+                    <a href="#">Iniciar sesión</a>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenedor de búsqueda -->
+<!-- Contenedor de búsqueda -->
+<main class="search-container">
+    <section class="filter-section">
+        <h2 class="subtitulo">Encuentra tu alojamiento ideal</h2> 
+        <form id="search-form">
+            <div class="filter-grid">
+                <!-- Filtro de ubicación (sin opciones predefinidas) -->
+                <div class="filter-item">
+                    <label for="location">Ubicación</label>
+                    <select id="location" name="ubicacion">
+                        <option value="">Selecciona una ubicación</option>
+                        <!-- Las opciones se agregarán automáticamente con JavaScript -->
+                    </select>
+                </div>
+
+                <!-- Filtro de precio -->
+                <div class="filter-item">
+                    <label for="price-range">Rango de precio</label>
+                    <select id="price-range" name="precio">
+                        <option value="">Cualquier precio</option>
+                        
+                    </select>
+                </div>
+
+                <!-- Filtro de habitaciones -->
+                <div class="filter-item">
+                    <label for="rooms">Habitaciones</label>
+                    <select id="rooms" name="habitaciones_disponibles">
+                        <option value="">Cualquier número</option>
+                    </select>
+                </div>
+            </div>
+
+            <button type="submit" class="search-button">Buscar alojamientos</button>
+        </form>
+    </section>
+
+    <!-- Contenedor para resultados de API -->
+    <div class="results-container" id="search-results">
+        <!-- Los resultados de la API se insertarán aquí -->
+    </div>
+
+    
+</main>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-column">
+            <p class="footer-titulos"><strong>Detalles de contacto</strong></p>
+            <p>Tel: +507 1234-5678</p>
+            <p>Mov: +507 1234-5678</p>
+            <p>E-mail: info@tupagina.com</p>
+        </div>
+
+        <!-- Segunda columna: Navegación -->
+        <div class="footer-column">
+            <ul>
+                <p class="footer-titulos"><strong>Navegación</strong></p>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Buscar alojamiento</a></li>
+                <li><a href="#">Alojamientos Destacados</a></li>
+                <li><a href="#">Contáctanos</a></li>
+            </ul>
+        </div>
+
+        <!-- Tercera columna: Nuestros Aliados -->
+        <div class="footer-column">
+            <p class="footer-titulos"><strong>Nuestros Aliados</strong></p>
+            <p>Colaboramos con una variedad de alojamientos en todo Panamá.</p>
+        </div>
+
+        <!-- Cuarta columna: Caja de información -->
+        <div class="footer-column footer-info-box">
+            <p><strong>Más información</strong></p>
+            <p>Nuestro equipo está listo para ayudarte a encontrar el alojamiento ideal en Panamá. Contamos con una amplia selección de opciones para que elijas.</p>
+        </div>
+    </div>
+</div>
+
+<hr>
+
+<!-- Parte inferior del footer -->
+<div class="footer-bottom">
+    <p>&copy; 2024 Alojamientos Panamá. Todos los derechos reservados.</p>
+</div>
+</footer>  
+<script type="module" src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="" href="Style.css">
+    <title>Detalles del Alojamiento - Alojamientos Panamá</title>
+    
+    
+</head>
+<body>
+    <nav>
+        <div class="navbar-container">
+            <a href="#" class="navbar-logo">
+                <h1>Alojamientos Panamá</h1>
+            </a>
+            <div class="navbar-menu">
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Buscar Alojamientos</a></li>
+                    <li id="myReservations" style="display: none;"><a href="mis-reservas.html">Mis reservas</a></li>
+                </ul>
+                <button class="navbar-button">Iniciar sesión</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="hero-section">
+            <div class="hero-image">
+                <img src="/api/placeholder/1200/400" alt="Vista del alojamiento">
+            </div>
+            <!-- Galería tipo carousel -->
+            <section class="carousel-section">
+            <h2>Galería de Imágenes</h2>
+            <div class="carousel-container">
+            <div class="carousel-images">
+            <img src="https://www.panamaequity.com/wp-content/uploads/2024/02/THE-RESIDENCES-3-BEDROOM-LUXURY-APARTMENT-FOR-SALE-IN-PUNTA-PACIFICA-PANAMA-1.jpg" alt="Imagen del alojamiento 1">
+            <img src="https://via.placeholder.com/600x400" alt="Imagen del alojamiento 2">
+            <img src="https://via.placeholder.com/600x400" alt="Imagen del alojamiento 3">
+            <img src="https://via.placeholder.com/600x400" alt="Imagen del alojamiento 4">
+            </div>
+            <button class="carousel-prev" onclick="prevSlide()">&#10094;</button>
+            <button class="carousel-next" onclick="nextSlide()">&#10095;</button>
+            </div>
+        </section>
+
+            <div class="hero-content">
+                <h1>Apartamento de Lujo en Ciudad de Panamá</h1>
+                <p class="location">
+                    <i class="fas fa-map-marker-alt"></i> Calle 50, Ciudad de Panamá
+                </p>
+                <p class="price">$180 / noche</p>
+            </div>
+        </section>
+
+        <section class="details-section">
+            <h2>Detalles del Alojamiento</h2>
+            <div class="details-grid">
+                <div class="detail-item">
+                    <i class="fas fa-bed"></i>
+                    <h3>Habitaciones</h3>
+                    <p>3 habitaciones</p>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-bath"></i>
+                    <h3>Baños</h3>
+                    <p>2 baños</p>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-users"></i>
+                    <h3>Capacidad</h3>
+                    <p>6 huéspedes</p>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-parking"></i>
+                    <h3>Estacionamiento</h3>
+                    <p>2 espacios</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="description-section">
+            <h2>Descripción</h2>
+            <p>
+                Lujoso apartamento ubicado en el corazón financiero de la Ciudad de Panamá. Disfrute de impresionantes vistas a la bahía desde este moderno espacio que combina comodidad y elegancia. A pocos pasos de restaurantes exclusivos, centros comerciales y el paseo marítimo.
+            </p>
+        </section>
+
+        <section class="amenities-section">
+            <h2>Servicios y Comodidades</h2>
+            <ul class="amenities-list">
+                <li><i class="fas fa-wifi"></i> Wi-Fi de alta velocidad</li>
+                <li><i class="fas fa-tv"></i> Smart TV 4K</li>
+                <li><i class="fas fa-swimming-pool"></i> Piscina infinita</li>
+                <li><i class="fas fa-dumbbell"></i> Gimnasio 24/7</li>
+                <li><i class="fas fa-concierge-bell"></i> Servicio de conserjería</li>
+                <li><i class="fas fa-car"></i> Valet parking</li>
+            </ul>
+        </section>
+
+        <section class="booking-section">
+            <h2>Reserva este Alojamiento</h2>
+            <form>
+                <div class="form-group">
+                    <label for="check-in">Fecha de Llegada</label>
+                    <input type="date" id="check-in" required>
+                </div>
+                <div class="form-group">
+                    <label for="check-out">Fecha de Salida</label>
+                    <input type="date" id="check-out" required>
+                </div>
+                <div class="form-group">
+                    <label for="guests">Número de Huéspedes</label>
+                    <input type="number" id="guests" min="1" max="6" required>
+                </div>
+                <button type="submit" class="booking-button">Reservar Ahora</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <p class="footer-titulos"><strong>Detalles de contacto</strong></p>
+                <p>Tel: +507 1234-5678</p>
+                <p>Mov: +507 1234-5678</p>
+                <p>E-mail: info@tupagina.com</p>
+            </div>
+
+            <!-- Segunda columna: Navegación -->
+            <div class="footer-column">
+                <ul>
+                    <p class="footer-titulos"><strong>Navegación</strong></p>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Buscar alojamiento</a></li>
+                    <li><a href="#">Alojamientos Destacados</a></li>
+                    <li><a href="#">Contáctanos</a></li>
+                </ul>
+            </div>
+
+            <!-- Tercera columna: Nuestros Aliados -->
+            <div class="footer-column">
+                <p class="footer-titulos"><strong>Nuestros Aliados</strong></p>
+                <p>Colaboramos con una variedad de alojamientos en todo Panamá.</p>
+            </div>
+
+            <!-- Cuarta columna: Caja de información -->
+            <div class="footer-column footer-info-box">
+                <p><strong>Más información</strong></p>
+                <p>Nuestro equipo está listo para ayudarte a encontrar el alojamiento ideal en Panamá. Contamos con una amplia selección de opciones para que elijas.</p>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- Parte inferior del footer -->
+    <div class="footer-bottom">
+        <p>&copy; 2024 Alojamientos Panamá. Todos los derechos reservados.</p>
+    </div>
+</footer>  
+</body>
+</html>
