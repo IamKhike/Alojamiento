@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Reservas - Alojamientos Panamá</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="script.js"></script>
+</head>
+<body>
+    <nav>
+        <div class="navbar-container">
+            <a href="#" class="navbar-logo">
+                <h1>Alojamientos Panamá</h1>
+            </a>
+            <div class="navbar-menu">
+                <ul>
+                    <li><a href="PagInicio.html">Inicio</a></li>
+                    <li><a href="PagBuscarAlojamientos.html">Buscar Alojamientos</a></li>
+                    <li id="myReservations" style="display: none;"><a href="MisReservas.html">Mis reservas</a></li>
+                </ul>
+                <button class="navbar-button">Cerrar sesión</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="reservations-section" style="margin-top: 5rem;">
+            <h1>Mis Reservas</h1>
+            <table id="reservations-table">
+                <thead>
+                    <tr>
+                        <th>Alojamiento</th>
+                        <th>Fecha de Llegada</th>
+                        <th>Fecha de Salida</th>
+                        <th>Número de Huéspedes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Las reservas se cargarán aquí -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <p><strong>Detalles de contacto</strong></p>
+                <p>Tel: +507 1234-5678</p>
+                <p>Mov: +507 1234-5678</p>
+                <p>E-mail: info@tupagina.com</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+// Función para verificar si el usuario está logueado
+async function checkLoginStatus() {
+    const token = localStorage.getItem('userToken'); // Obtener el token de localStorage
+    const myReservationsLink = document.getElementById('myReservations');
+    const btnLogin = document.querySelector('.navbar-button');
+    
+    if (token) {
+        // Decodificar el token para obtener el usuarioId
+        const payload = JSON.parse(atob(token.split('.')[1])); // Decodificar JWT
+        const usuarioId = payload.id; // Asumiendo que el ID del usuario está en el payload como 'id'
+        
+        // Mostrar "Mis reservas" y cambiar el botón a "Cerrar sesión"
+        myReservationsLink.style.display = 'block';
+        btnLogin.innerHTML = `<a href="#" id="logoutButton">Cerrar sesión</a>`;
+        document.getElementById('logoutButton').addEventListener('click', logout);
+
+        return usuarioId; // Devolver el usuarioId
+    } else {
+        myReservationsLink.style.display = 'none';
+        btnLogin.addEventListener('click', () => window.location.href = 'InicioSesion.html'); // Redirigir al login si no está logueado
+        return null;
+    }
+}
+
+// Función para cerrar sesión
+function logout(event) {
+    if (event) event.preventDefault();
+    localStorage.removeItem('userToken'); // Eliminar token
+    window.location.href = 'InicioSesion.html'; // Redirigir al login
+}
+
+// Función para cargar las reservas del usuario
+async function cargarMisReservas() {
+    const usuarioId = await checkLoginStatus();
+    if (!usuarioId) {
+        alert("No has iniciado sesión");
+        window.location.href = "InicioSesion.html";
+        return;
+    }
+
+    try {
+        const response = await fetch(`http://localhost:5277/api/alojamientos/reservas/usuario/${usuarioId}`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('userToken')}`, // Usar la clave correcta del token
+                'Content-Type': 'application/json',
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error('Error al cargar las reservas');
+        }
+
+        const reservas = await response.json();
+        if (reservas.length === 0) {
+            document.querySelector('#reservations-table tbody').innerHTML = '<tr><td colspan="4">No tienes reservas</td></tr>';
+            return;
+        }
+
+        // Mostrar las reservas en la tabla
+        const tableBody = document.querySelector('#reservations-table tbody');
+        reservas.forEach(reserva => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${reserva.alojamiento.nombre}</td>
+                <td>${reserva.fechaInicio}</td>
+                <td>${reserva.fechaFin}</td>
+                <td>${reserva.numeroHuespedes}</td>
+            `;
+            tableBody.appendChild(row);
+        });
+    } catch (error) {
+        console.error('Error al obtener las reservas:', error);
+        alert('Hubo un problema al cargar tus reservas');
+    }
+}
+
+// Llamar a la función de carga de reservas al cargar la página
+document.addEventListener('DOMContentLoaded', cargarMisReservas);
+
+    </script>
+</body>
+</html>
