@@ -20,6 +20,7 @@
                     <li><a href="PagInicio.html">Inicio</a></li>
                     <li><a href="#">Buscar Alojamientos</a></li>
                     <li id="myReservations" style="display: none;"><a href="MisReservas.html">Mis reservas</a></li>
+                    <li id="user-display"></li>
                 </ul>
                 <button class="navbar-button">
                     <a href="#">Iniciar sesión</a>
@@ -67,9 +68,7 @@
     </section>
 
     <!-- Contenedor para resultados de API -->
-    <div class="results-container" id="search-results">
-        <!-- Los resultados de la API se insertarán aquí -->
-    </div>
+    <div id="search-results" class="resultados-contenedor"></div>
 
     
 </main>
@@ -115,5 +114,23 @@
 </div>
 </footer>  
 <script type="module" src="script.js"></script>
+<script>
+
+    document.addEventListener('DOMContentLoaded', () => {
+    const userName = localStorage.getItem('userName');
+    const userToken = localStorage.getItem('userToken');
+
+        if (userToken && userName) {
+        // Muestra el nombre del usuario en la interfaz
+        const userDisplay = document.getElementById('user-display');
+        if (userDisplay) {
+            userDisplay.textContent = `Bienvenido, ${userName}`;
+        }
+        } else {
+        // Redirigir al login si no hay token
+        window.location.href = 'InicioSesion.html';
+         }
+    });
+</script>
 </body>
 </html>

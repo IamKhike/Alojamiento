@@ -6,6 +6,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="Style.css">
     <script type="module" src="script.js"></script>
+    <script type="module" src="verificarUsuariosXPaginas.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css">
+
     <title>Hoteles Panamá</title>
 </head>
 <body>
@@ -24,6 +27,7 @@
                     <li><a href="#">Inicio</a></li>
                     <li><a href="PagBuscarAlojamientos.html">Buscar Alojamientos</a></li>
                     <li id="myReservations" style="display: none;"><a href="MisReservas.html">Mis reservas</a></li>
+                    <li id="user-display"></li>
                 </ul>
                 <button class="navbar-button">
                     <a href="InicioSesion.html">Iniciar sesión</a>
@@ -44,13 +48,15 @@
     <!--Inicio de la seccion de Alojamientos Destacados-->
     <section>
         <h2 class="subtitulo">Alojamientos Destacados</h2>
-        <div class="contenedor-carrusel">
-            <div class="carrusel-track"><!--cada div tiene todos los elementos de un solo alojamiento que se observa en el figa-->
+        <div class="splide">
+            <div class="splide__track">
+              <ul class="splide__list">
+                <!-- Los elementos individuales se colocarán aquí -->
+              </ul>
             </div>
-            <button class="boton-carrusel antes"> </button>
-            <button class="boton-carrusel despues"> </button>
-            </div>
-        </div>
+          </div>
+          
+        
     </section>
 
     <section class="video-section">
@@ -208,5 +214,9 @@
             <p>&copy; 2024 Alojamientos Panamá. Todos los derechos reservados.</p>
         </div>
     </footer>      
+ 
+        
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
+
 </body>
 </html>

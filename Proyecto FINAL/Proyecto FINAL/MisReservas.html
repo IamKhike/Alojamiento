@@ -19,6 +19,7 @@
                     <li><a href="PagInicio.html">Inicio</a></li>
                     <li><a href="PagBuscarAlojamientos.html">Buscar Alojamientos</a></li>
                     <li id="myReservations" style="display: none;"><a href="MisReservas.html">Mis reservas</a></li>
+                    <li id="user-display"></li>
                 </ul>
                 <button class="navbar-button">Cerrar sesión</button>
             </div>
@@ -135,6 +136,29 @@ async function cargarMisReservas() {
 
 // Llamar a la función de carga de reservas al cargar la página
 document.addEventListener('DOMContentLoaded', cargarMisReservas);
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const userName = localStorage.getItem('userName');
+    const userToken = localStorage.getItem('userToken');
+
+        if (userToken && userName) {
+        // Muestra el nombre del usuario en la interfaz
+        const userDisplay = document.getElementById('user-display');
+        if (userDisplay) {
+            userDisplay.textContent = `Bienvenido, ${userName}`;
+        }
+        } else {
+        // Redirigir al login si no hay token
+        window.location.href = 'InicioSesion.html';
+         }
+    });
+
+
+
+
+
 
     </script>
 </body>

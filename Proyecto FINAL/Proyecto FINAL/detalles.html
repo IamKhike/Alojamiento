@@ -19,6 +19,7 @@
                     <li><a href="PagInicio.html">Inicio</a></li>
                     <li><a href="PagBuscarAlojamientos.html">Buscar Alojamientos</a></li>
                     <li id="myReservations" style="display: none;"><a href="MisReservas.html">Mis reservas</a></li>
+                    <li id="user-display"></li>
                 </ul>
                 <button class="navbar-button">Iniciar sesión</button>
             </div>
@@ -169,13 +170,6 @@
 
 <script>
     // Función para calcular la diferencia de noches
-    function calcularNoches(fechaInicio, fechaFin) {
-        const inicio = new Date(fechaInicio);
-        const fin = new Date(fechaFin);
-        if (inicio >= fin) return 0; // Asegúrate de que las fechas sean válidas
-        const diferencia = fin.getTime() - inicio.getTime();
-        return Math.ceil(diferencia / (1000 * 3600 * 24));
-    }
 
     async function obtenerPrecioAlojamiento() {
     try {
@@ -262,8 +256,8 @@
                     return;
                 }
 
-                // Obtener precio por noche (simulado)
-                const precioPorNoche = 325;
+            
+                const precioPorNoche = await obtenerPrecioAlojamiento();
                 const precioTotal = noches * precioPorNoche;
 
                 // Mostrar resumen de la reserva
@@ -283,10 +277,28 @@
         document.getElementById('booking-form').addEventListener('submit', function(event) {
             event.preventDefault();
             alert('Reserva completada'); // O cualquier acción que desees realizar
+            enviarReserva();
         });
 
         // Llamar a la función de verificación de estado de login
         checkLoginStatus();
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+    const userName = localStorage.getItem('userName');
+    const userToken = localStorage.getItem('userToken');
+
+        if (userToken && userName) {
+        // Muestra el nombre del usuario en la interfaz
+        const userDisplay = document.getElementById('user-display');
+        if (userDisplay) {
+            userDisplay.textContent = `Bienvenido, ${userName}`;
+        }
+        } else {
+        // Redirigir al login si no hay token
+        window.location.href = 'InicioSesion.html';
+         }
+    });
 
 </script>
 

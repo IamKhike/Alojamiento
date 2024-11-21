@@ -30,35 +30,44 @@
     </div>
 
     <script>
-        document.getElementById('registerForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const nombre = document.getElementById('nombre').value;
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            
-            try {
-                const response = await fetch('http://localhost:5277/api/alojamientos/register', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ nombre, email, password })
-                });
-                
-                if (response.ok) {
-                    alert('Registro exitoso');
-                    window.location.href = 'InicioSesion.html';
-                } else {
-                    const data = await response.json();
-                    alert(data.message || 'Error en el registro');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                alert('Error al intentar registrarse');
+document.addEventListener("DOMContentLoaded", () => {
+    const registerForm = document.getElementById("registerForm");
+    
+    registerForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const nombre = document.getElementById("nombre").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value.trim();
+
+        if (!nombre || !email || !password) {
+            alert("Por favor, complete todos los campos.");
+            return;
+        }
+
+        try {
+            const response = await fetch("http://localhost:5277/api/User/register", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ nombre, email, password }),
+            });
+
+            if (!response.ok) {
+                const error = await response.json();
+                throw new Error(error.message || "Error al registrarse");
             }
-        });
-    </script>
+
+            alert("Registro exitoso. Redirigiendo al inicio de sesión...");
+            window.location.href = "InicioSesion.html"; // Página de inicio de sesión
+        } catch (error) {
+            console.error("Error:", error.message);
+            alert(error.message || "Registro fallido.");
+        }
+    });
+});
+
+        </script>
+        
 
 
 </body>

@@ -27,35 +27,46 @@
     </div>
 
     <script>
-        document.getElementById('loginForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            
-            try {
-                const response = await fetch('http://localhost:5277/api/alojamientos/login', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ email, password })
-                });
-                
-                if (response.ok) {
-                    const data = await response.json();
-                    // Guardar el token en localStorage
-                    localStorage.setItem('userToken', data.token);
-                    // Redirigir a la página principal
-                    window.location.href = 'PagInicio.html';
-                } else {
-                    alert('Email o contraseña incorrectos');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                alert('Error al intentar iniciar sesión');
+document.addEventListener("DOMContentLoaded", () => {
+    const loginForm = document.getElementById("loginForm");
+    
+    loginForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value.trim();
+
+        if (!email || !password) {
+            alert("Por favor, complete todos los campos.");
+            return;
+        }
+
+        try {
+            const response = await fetch("http://localhost:5277/api/User/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, password }),
+            });
+
+            if (!response.ok) {
+                const error = await response.json();
+                throw new Error(error.message || "Error al iniciar sesión");
             }
-        });
-    </script>
+
+            const data = await response.json();
+            localStorage.setItem("userToken", data.token); // Almacenar el token JWT
+            localStorage.setItem("userName", data.nombre); // Almacenar el nombre del usuario
+            
+            alert("Inicio de sesión exitoso. Redirigiendo...");
+            window.location.href = "PagInicio.html"; // Página protegida
+        } catch (error) {
+            console.error("Error:", error.message);
+            alert(error.message || "Inicio de sesión fallido.");
+        }
+    });
+});
+
+        </script>
+    
 </body>
 </html>

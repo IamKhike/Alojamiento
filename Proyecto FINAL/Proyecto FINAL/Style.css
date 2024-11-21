@@ -742,3 +742,149 @@ footer hr {
 
 
 
+
+
+/* Contenedor del carrusel */
+.carrusel-contenedor {
+    position: relative;
+    width: 100%;
+    height: 300px; /* Ajusta según diseño */
+    overflow: hidden; /* Ocultar contenido desbordante */
+    background: #f4f4f4;
+    display: flex;
+    align-items: center;
+}
+
+/* Carrusel interno */
+.carrusel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out; /* Animación suave */
+}
+
+/* Estilo para cada alojamiento */
+.contenedor-alojamiento {
+    flex: 0 0 20%; /* Cada elemento ocupa el 20% del carrusel (1/5) */
+    box-sizing: border-box;
+    padding: 10px;
+    text-align: center;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 0; /* Sin márgenes extra */
+    transition: transform 0.3s ease-in-out;
+}
+
+.contenedor-alojamiento:hover {
+    transform: scale(1.05); /* Efecto zoom */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Imagen dentro del alojamiento */
+.contenedor-Imagen img {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+/* Texto y botones */
+.precio,
+.ubicacion-Alojamiento,
+.Capacidad {
+    justify-content: center;
+    margin: 10px 0;
+    font-size: 1rem;
+    color: #333;
+}
+
+.Mas-Detalles {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.Mas-Detalles:hover {
+    background-color: #0056b3;
+}
+
+/* Flechas de navegación */
+.flecha {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 10px;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 10;
+    user-select: none; /* Evitar selección de texto */
+}
+
+#carrusel-anterior {
+    left: 10px;
+}
+
+#carrusel-siguiente {
+    right: 10px;
+}
+
+
+
+
+
+
+
+
+.resultados-contenedor {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.alojamiento-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.alojamiento-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.15);
+}
+
+.contenedor-imagen img {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+.alojamiento-card h3 {
+    font-size: 1.5rem;
+    margin: 15px 10px 5px;
+    color: #333;
+}
+
+.alojamiento-card p {
+    font-size: 1rem;
+    margin: 5px 10px;
+    color: #555;
+}
+
+
+
+
+
+
+
+
+
+

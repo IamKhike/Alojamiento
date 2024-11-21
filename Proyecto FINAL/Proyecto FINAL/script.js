@@ -3,14 +3,14 @@ async function obtenerAlojamientosDestacados() {
         const response = await fetch("http://localhost:5277/api/Alojamientos/destacados");
         const alojamientos = await response.json();
 
-        const contenedorCarrusel = document.querySelector(".carrusel-track");
-        contenedorCarrusel.innerHTML = "";
+        const contenedorCarrusel = document.querySelector(".splide__list");
+        contenedorCarrusel.innerHTML = ""; // Limpiar contenido previo
 
         alojamientos.forEach((alojamiento, index) => {
-            const alojamientoDiv = document.createElement("div");
-            alojamientoDiv.classList.add("contenedor-alojamiento");
+            const alojamientoLi = document.createElement("li");
+            alojamientoLi.classList.add("splide__slide", "contenedor-alojamiento");
 
-            alojamientoDiv.innerHTML = `
+            alojamientoLi.innerHTML = `
                 <div class="contenedor-Imagen">
                     <img src="${alojamiento.url_imagen}" alt="${alojamiento.nombre}">
                     <div class="precio">
@@ -25,22 +25,35 @@ async function obtenerAlojamientosDestacados() {
                 </div>
                 <button class="Mas-Detalles">Más detalles</button>
             `;
-            contenedorCarrusel.appendChild(alojamientoDiv);
+            contenedorCarrusel.appendChild(alojamientoLi);
 
             // Si es el primer alojamiento, añade una funcionalidad especial al botón "Más detalles"
             if (index === 0) {
-                const botonMasDetalles = alojamientoDiv.querySelector(".Mas-Detalles");
+                const botonMasDetalles = alojamientoLi.querySelector(".Mas-Detalles");
                 botonMasDetalles.addEventListener("click", () => {
                     window.location.href = "detalles.html";
                 });
             }
         });
+
+        // Inicializa Splide después de cargar los alojamientos
+        var splide = new Splide('.splide', {
+            perPage: 5, // Mostrar 5 elementos
+            focus: 0,  // Centrar el carrusel
+            omitEnd: true, // Detener en el último elemento
+            pagination: false, // Desactivar paginación
+            arrows: true, // Flechas de navegación
+            gap: '10px', // Espacio entre elementos
+        });
+
+        splide.mount(); // Montar el carrusel
     } catch (error) {
         console.error("Error al obtener alojamientos:", error);
     }
 }
 
 obtenerAlojamientosDestacados();
+
 
 
 // Cargar datos desde la API y llenar las opciones de filtros dinámicamente
@@ -50,7 +63,7 @@ function cargarFiltros() {
         .then(data => {
             cargarUbicaciones(data);
             cargarRangoPrecios(data);
-            cargarHabitaciones(data);
+            cargarHuespedes(data);
             configurarBusqueda(data);
         })
         .catch(error => {
@@ -90,11 +103,11 @@ function cargarRangoPrecios(data) {
     priceSelect.appendChild(optionPlus);
 }
 
-function cargarHabitaciones(data) {
+function cargarHuespedes(data) {
     const roomsSelect = document.getElementById('rooms');
-    const habitaciones = [...new Set(data.map(alojamiento => alojamiento.habitaciones_disponibles))].sort((a, b) => a - b);
+    const huespedes = [...new Set(data.map(alojamiento => alojamiento.capacidad_huespedes))].sort((a, b) => a - b);
 
-    habitaciones.forEach(num => {
+    huespedes.forEach(num => {
         const option = document.createElement('option');
         option.value = num;
         option.textContent = num;
@@ -124,7 +137,7 @@ function filtrarAlojamientos(data) {
     const alojamientosFiltrados = data.filter(alojamiento => {
         const enRango = alojamiento.precio >= minPrice && alojamiento.precio <= maxPrice;
         const coincideUbicacion = !location || alojamiento.provincia === location;
-        const coincideHabitaciones = !rooms || alojamiento.habitaciones_disponibles === Number(rooms);
+        const coincideHabitaciones = !rooms || alojamiento.capacidad_huespedes === Number(rooms);
         return enRango && coincideUbicacion && coincideHabitaciones;
     });
 
@@ -143,7 +156,7 @@ function mostrarResultados(alojamientos) {
 
     alojamientos.forEach(alojamiento => {
         const alojamientoCard = document.createElement('div');
-        alojamientoCard.classList.add('result-card');
+        alojamientoCard.classList.add('alojamiento-card');
         
         alojamientoCard.innerHTML = `
             <img src="${alojamiento.url_imagen}" alt="${alojamiento.nombre}">
@@ -151,7 +164,7 @@ function mostrarResultados(alojamientos) {
             <p><strong>Ubicación:</strong> ${alojamiento.ubicacion}</p>
             <p><strong>Tipo:</strong> ${alojamiento.tipo_alojamiento}</p>
             <p><strong>Precio:</strong> $${alojamiento.precio}</p>
-            <p><strong>Habitaciones disponibles:</strong> ${alojamiento.habitaciones_disponibles}</p>
+            <p><strong>Capacidad:</strong> ${alojamiento.capacidad_huespedes}</p>
             <p><strong>Descripción:</strong> ${alojamiento.descripcion_corta}</p>
         `;
 
@@ -164,112 +177,113 @@ window.onload = cargarFiltros;
 
 
 
-// Función para verificar si el usuario está logueado
-async function checkLoginStatus() {
-    const token = localStorage.getItem('userToken');
-    const myReservationsLink = document.getElementById('myReservations');
-    const btnLogin = document.querySelector('.navbar-button');
-    
-    if (token) {
-        try {
-            const response = await fetch(`http://localhost:5277/api/alojamientos/validate?token=${token}`);
-            if (response.ok) {
-                const data = await response.json();
-                // Mostrar "Mis reservas" y cambiar el botón a "Cerrar sesión"
-                myReservationsLink.style.display = 'block';
-                btnLogin.innerHTML = `<a href="#" id="logoutButton">Cerrar sesión</a>`;
 
-                // Asegurar que el evento de cierre de sesión está asignado
-                document.getElementById('logoutButton').addEventListener('click', logout);
-            } else {
-                localStorage.removeItem('userToken');
-                myReservationsLink.style.display = 'none';
-            }
-        } catch (error) {
-            console.error('Error:', error);
-            myReservationsLink.style.display = 'none';
-        }
-    } else {
-        // Si no hay token, ocultar "Mis reservas"
-        myReservationsLink.style.display = 'none';
+// Función para validar las fechas de reserva
+function validarFechas(fechaInicio, fechaFin) {
+    const inicio = new Date(fechaInicio);
+    const fin = new Date(fechaFin);
+    const hoy = new Date();
+    hoy.setHours(0, 0, 0, 0);
+
+    if (inicio < hoy) {
+        alert('La fecha de inicio no puede ser anterior a hoy');
+        return false;
     }
+    if (fin <= inicio) {
+        alert('La fecha de fin debe ser posterior a la fecha de inicio');
+        return false;
+    }
+    return true;
 }
 
-// Función para cerrar sesión
-function logout(event) {
-    // Prevenir el comportamiento predeterminado del enlace
-    if (event) event.preventDefault();
-
-    // Eliminar el token y redirigir al usuario
-    localStorage.removeItem('userToken');
-    console.log("Token eliminado");
-    window.location.href = 'InicioSesion.html';
-}
-
-// Llamar a la función cuando se carga la página
-document.addEventListener('DOMContentLoaded', checkLoginStatus);
-
-
-
-
-
-//funciones para la reservas
-
-function obtenerUsuarioIdDesdeToken() {
-    const token = localStorage.getItem('token'); // Obtener el token del localStorage
-    if (!token) return null;
-
-    const payload = JSON.parse(atob(token.split('.')[1])); // Decodificar el JWT (parte payload)
-    return payload.id; // Suponiendo que el JWT contiene el usuarioId en el campo "id"
-}
-
+// Función principal para enviar la reserva
 async function enviarReserva() {
-    const alojamientoId = 1; // Suponiendo que el alojamiento seleccionado tiene el ID 1
-    const usuarioId = obtenerUsuarioIdDesdeToken(); // Obtén el id del usuario desde el token
-
-    if (!usuarioId) {
-        alert('Usuario no autenticado');
-        return;
-    }
-
-    const fechaInicio = document.getElementById('check-in').value;
-    const fechaFin = document.getElementById('check-out').value;
-    const numeroHuespedes = document.getElementById('guests').value;
-
-    // Validar campos
-    if (!fechaInicio || !fechaFin || !numeroHuespedes) {
-        alert('Por favor, complete todos los campos.');
-        return;
-    }
-
-    const reserva = {
-        alojamiento_id: alojamientoId,
-        usuario_id: usuarioId, // Enviar el id del usuario logueado
-        fecha_inicio: fechaInicio,
-        fecha_fin: fechaFin,
-    };
-
     try {
+        // Obtener token y validar autenticación
+        const token = localStorage.getItem('userToken');
+        if (!token) {
+            alert('Por favor, inicie sesión para realizar una reserva');
+            window.location.href = 'InicioSesion.html';
+            return;
+        }
+
+        // Obtener valores del formulario
+        const fechaInicio = document.getElementById('check-in').value;
+        const fechaFin = document.getElementById('check-out').value;
+        const numeroHuespedes = parseInt(document.getElementById('guests').value);
+        const usuarioId = obtenerUsuarioIdDesdeToken();
+
+        // Validaciones
+        if (!fechaInicio || !fechaFin || !numeroHuespedes || !usuarioId) {
+            alert('Por favor, complete todos los campos requeridos');
+            return;
+        }
+
+        if (!validarFechas(fechaInicio, fechaFin)) {
+            return;
+        }
+
+        // Construir objeto de reserva
+        const reserva = {
+            alojamiento_id: 1, // ID fijo del alojamiento actual
+            usuario_id: 10,
+            fecha_inicio: fechaInicio,
+            fecha_fin: fechaFin,
+        };
+
+        // Enviar petición al backend
         const response = await fetch('http://localhost:5277/api/alojamientos/CrearReservas', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(reserva),
+            body: JSON.stringify(reserva)
         });
+        
 
         if (!response.ok) {
-            throw new Error('Error al realizar la reserva');
+            const errorData = await response.json();
+            throw new Error(errorData.message || 'Error al realizar la reserva');
         }
 
         const data = await response.json();
-        alert('Reserva realizada con éxito');
-        console.log(data);
+        alert('¡Reserva realizada con éxito!');
+        window.location.href = 'MisReservas.html'; // Redirigir a la página de reservas
+
     } catch (error) {
-        console.error('Error al enviar la reserva:', error);
-        alert('Hubo un problema al realizar la reserva');
+        console.error('Error al procesar la reserva:', error);
+        alert(`Error al realizar la reserva: ${error.message}`);
     }
 }
+
+// Agregar event listeners cuando se carga el documento
+document.addEventListener('DOMContentLoaded', () => {
+    const bookingForm = document.getElementById('booking-form');
+    if (bookingForm) {
+        bookingForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            enviarReserva();
+        });
+    }
+
+    // Inicializar fechas mínimas en los inputs
+    const checkInInput = document.getElementById('check-in');
+    const checkOutInput = document.getElementById('check-out');
+    if (checkInInput && checkOutInput) {
+        const today = new Date().toISOString().split('T')[0];
+        checkInInput.min = today;
+        checkInInput.addEventListener('change', () => {
+            checkOutInput.min = checkInInput.value;
+        });
+    }
+});
+
+
+
+
+
+
+
 
 
 
