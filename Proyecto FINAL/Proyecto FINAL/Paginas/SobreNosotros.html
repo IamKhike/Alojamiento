@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/Proyecto FINAL/Proyecto FINAL/Styles/Style.css">
+    <link rel="stylesheet" href="/Proyecto FINAL/Proyecto FINAL/Styles/NosotrosStyle.css">
+    <link rel="stylesheet" href="/Proyecto FINAL/Proyecto FINAL/Styles/FooterStyle.css">
+    <script type="module" src="/Proyecto FINAL/Proyecto FINAL/Scripts/script.js"></script>
+    <script src="/Proyecto FINAL/Proyecto FINAL/Scripts/auth.js"></script>
+
+    <title>Sobre Nosotros - Panama Lodge</title>
+</head>
+
+
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="navbar-container">
+            <!-- Logo Section (izquierda) -->
+            <div class="navbar-logo">
+                <a href="PagInicio.html">
+                    <img src="/Proyecto FINAL/Proyecto FINAL/Imagenes/LogoOficial.png" alt="Logo" class="navbar-logo-img">
+                    <h1>Panama Lodge</h1>
+                </a>
+            </div>
+    
+            <!-- Menu Items (derecha) -->
+            <div class="navbar-menu">
+                <ul>
+                    <li><a href="PagInicio.html">Inicio</a></li>
+                    <li><a href="PagBuscarAlojamientos.html">Buscar Alojamientos</a></li>
+                    <li id="myReservations" style="display: none;"><a href="MisReservas.html">Mis reservas</a></li>
+                    <li><a href="#">Sobre Nosotros</a></li>
+                    <li id="user-display"></li>
+                </ul>
+                
+                <button class="navbar-button">
+                    <a href="InicioSesion.html">Iniciar sesión</a>
+                </button>
+                
+                <div class="search-icon">
+                    <a href="https://www.google.com" target="_blank" title="Ir a Google">
+                        <img src="../Imagenes/search.png" alt="Ícono de búsqueda" class="search-image">
+                    </a>
+                </div>
+                
+                <div class="social-links-nav">
+                    <a href="https://www.facebook.com/" target="_blank">
+                        <img src="/Proyecto FINAL/Proyecto FINAL/Imagenes/icon_Facebook.png" alt="Facebook">
+                    </a>
+                    <a href="https://www.twitter.com/" target="_blank">
+                        <img src="/Proyecto FINAL/Proyecto FINAL/Imagenes/icon-twitterX.png" alt="Twitter">
+                    </a>
+                    <a href="https://www.instagram.com/" target="_blank">
+                        <img src="/Proyecto FINAL/Proyecto FINAL/Imagenes/icon-Instagram.png" alt="Instagram">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav> 
+
+    <!-- Sección Sobre Nosotros -->
+    <section class="tarjetas-seccion">
+        <h2>Nuestro Equipo</h2>
+        <div class="tarjetas-container">
+            <!-- Tarjeta 1 -->
+            <div class="tarjeta">
+                <img src="../Imagenes/er.jpeg" alt="Destino 1" class="tarjeta-img">
+                <div class="tarjeta-info">
+                    <h3>Eric Ruíz</h3>
+                    <p>8-1016-2092</p>
+                    <h4>Lic. en Gestión y Desarrollo de Software</h4>
+                    <p>Tengo amplios conocimientos en CSS y una base teórica en HTML, lo que me permite crear interfaces de usuario atractivas, funcionales y responsivas. 
+                    Me enfoco en mejorar la experiencia del usuario mientras sigo aprendiendo y explorando nuevas tendencias en diseño frontend.
+                    </p>
+                </div>
+            </div>
+    
+            <!-- Tarjeta 2 -->
+            <div class="tarjeta">
+                <img src="../Imagenes/cm.jpeg" alt="Destino 2" class="tarjeta-img">
+                <div class="tarjeta-info">
+                    <h3>Calvin Miró</h3>
+                    <p>10-714-2070</p>
+                    <h4>Lic. en Gestión y Desarrollo de Software</h4>
+                    <p>Tengo conocimientos básicos en Python, Java, HTML y CSS. He creado varios proyectos personales,
+                    lo que me ha permitido mejorar mis habilidades de desarrollo y comprender mejor la lógica de la programación. 
+                    Siempre busco nuevos retos para seguir aprendiendo y crecer como desarrollador.
+                    </p>
+                </div>
+            </div>
+    
+            <!-- Tarjeta 3 -->
+            <div class="tarjeta">
+                <img src="../Imagenes/gg.jpeg" alt="Destino 3" class="tarjeta-img">
+                <div class="tarjeta-info">
+                    <h3>Gabriel González</h3>
+                    <p>8-1017-1568</p>
+                    <h4>Lic. en Gestión y Desarrollo de Software</h4>
+                    <p>Conéctate con la cultura local y explora el auténtico Panamá.</p>
+                </div>
+            </div>
+
+
+            <!-- Tarjeta 4 -->
+            <div class="tarjeta">
+                <img src="../Imagenes/jv.jpg" alt="Destino 4" class="tarjeta-img">
+                <div class="tarjeta-info">
+                    <h3>Javier Valdés</h3>
+                    <p>8-1013-1074</p>
+                    <h4>Lic. en Gestión y Desarrollo de Software</h4>
+                    <p>Tengo experiencia en desarrollo web con un enfoque en frontend y conocimientos básicos en JavaScript. 
+                    Me especializo en diseñar interfaces responsivas y funcionales, utilizando JavaScript para agregar interactividad y mejorar la experiencia del usuario. 
+                    Complemento estas habilidades con conocimientos en backend para crear aplicaciones completas.
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+    
+
+    <footer>
+        <div class="animated-bg"></div>
+        
+        <!-- Sección principal del footer -->
+        <div class="footer-content">
+            
+            <!-- Detalles de contacto -->
+            <div class="footer-section">
+                <h3>Detalles de contacto</h3>
+                <p>Tel: +507 1234-5678</p>
+                <p>Mov: +507 1234-5678</p>
+                <p>E-mail: info@tupagina.com</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/" target="_blank"><img src="/Proyecto FINAL/Proyecto FINAL/Imagenes/icon_Facebook.png" alt="Facebook"></a>
+                    <a href="https://www.twitter.com/" target="_blank"><img src="/Proyecto FINAL/Proyecto FINAL/Imagenes/icon-twitterX.png" alt="Twitter"></a>
+                    <a href="https://www.instagram.com/" target="_blank"><img src="/Proyecto FINAL/Proyecto FINAL/Imagenes/icon-Instagram.png" alt="Instagram"></a>
+                </div>
+            </div>
+    
+            <!-- Navegación -->
+            <div class="footer-section">
+                <h3>Navegación</h3>
+                <ul class="footer-links">
+                    <li><a href="PagInicio.html">Inicio</a></li>
+                    <li><a href="PagBuscarAlojamientos.html">Buscar alojamiento</a></li>
+                    <li><a href="SobreNosotros.html">Contáctanos</a></li>
+                </ul>
+            </div>
+    
+            <!-- Explora -->
+            <div class="footer-section">
+                <h3>Explora</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Destinos Únicos</a></li>
+                    <li><a href="#">Experiencias VIP</a></li>
+                    <li><a href="#">Alojamientos Premium</a></li>
+                    <li><a href="#">Aventuras Locales</a></li>
+                </ul>
+            </div>
+    
+    
+            <!-- Contacto y Newsletter -->
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Soporte 24/7</a></li>
+                    <li><a href="#">Centro de Ayuda</a></li>
+                    <li><a href="#">Oficinas Locales</a></li>
+                    <li><a href="#">Trabaja con Nosotros</a></li>
+                </ul>
+            </div>
+    
+            <!-- Nuestros Aliados -->
+            <div class="footer-section">
+                <h3>Nuestros Aliados</h3>
+                <p>Colaboramos con una variedad de alojamientos en todo Panamá.</p>
+            </div>
+    
+            <!-- Más información -->
+            <div class="footer-section">
+                <h3>Más información</h3>
+                <p>Nuestro equipo está listo para ayudarte a encontrar el alojamiento ideal en Panamá. Contamos con una amplia selección de opciones para que elijas.</p>
+            </div>
+        </div>
+    
+        <!-- Barra inferior -->
+        <div class="bottom-bar">
+            <p>© 2024 Panama Lodge. Todos los derechos reservados.</p>
+        </div>
+    </footer>       
+
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
+</body>
+</html>
