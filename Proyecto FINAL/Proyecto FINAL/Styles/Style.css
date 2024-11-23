@@ -1,0 +1,647 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, h2, p, button {
+    font-family: 'Poppins', sans-serif;
+}
+
+
+body {
+    color: #333;
+    background-color: #f5f5f5;
+}
+
+/* Navbar */
+nav {
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0);
+    border-bottom: 2px solid #f1f1f1;
+    padding: 15px 50px; /* Aumenta el padding para que el navbar sea más amplio */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    position: fixed;  /* Fija el navbar en la pantalla */
+    top: 0;           /* Lo coloca en la parte superior */
+    left: 0;          /* Alineado a la izquierda */
+    width: 100%;      /* Asegura que ocupe todo el ancho de la pantalla */
+    z-index: 1000;    /* Asegura que el navbar esté por encima de otros elementos */
+}
+
+nav:hover {
+    background-color: #f7f7f7;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Contenedor del Navbar */
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    padding: 0 20px;
+    a{
+        text-decoration: none;
+    }
+}
+
+.navbar-logo {
+    margin-left: 20px; /* Espaciado desde el borde izquierdo */
+}
+
+.navbar-logo-img {
+    height: 70px; /* Ajusta el tamaño según tus necesidades */
+    margin-right: 10px; /* Espacio entre el logo y el texto */
+}
+
+
+/* Logo */
+.navbar-logo h1 {
+    font-size: 1.8rem;
+    background: linear-gradient(90deg, rgba(0, 35, 82, 0.9), #00bcd4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 10px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.navbar-logo a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    gap: 10px;
+}
+
+/* Menú */
+.navbar-menu {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 30px;
+    margin-left: 20px;
+}
+
+/* Lista de enlaces */
+.navbar-menu ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+    margin:30px;
+    padding: 0;
+    align-items: center;
+}
+
+.navbar-menu ul li a {
+    text-decoration: none;
+    background-color: #00bcd4;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;   
+     font-weight: bold;
+    font-size: 1rem;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+/* Efecto hover para enlaces */
+.navbar-menu ul li a:hover {
+    color: #000000;
+}
+
+.navbar-menu ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #00bcd4;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+}
+
+.navbar-menu ul li a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* Botón */
+.navbar-button {
+    background-color: #000000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.navbar-button a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.navbar-button:hover {
+    background-color: rgb(0, 0, 0, 0.65);
+    transform: translateY(-2px); /* Efecto de elevación */
+}
+
+.navbar-button:active {
+    transform: translateY(1px); /* Efecto de presión */
+}
+
+/* Bienvenida del Usuario*/
+#user-display {
+    min-width: 50px; /* Ancho mínimo */
+    min-height: 20px; /* Altura mínima */
+    background-color: rgba(255, 255, 255, 0); /* Fondo transparente inicial */
+    color: #00bcd4;; /* Blanco inicialmente */
+    transition: color 0.3s ease, background-color 0.3s ease; /* Transiciones */
+    font-weight: bold;
+}
+
+
+ 
+/* Responsividad */
+@media (max-width: 768px) {
+    .navbar-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar-menu {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px; /* Reduce el espacio en pantallas pequeñas */
+    }
+
+    .navbar-menu ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+
+.subtitulo {
+    display: inline-block;
+    padding-left: 15px;
+    border-left: 2px solid #000; /* La línea vertical, puedes cambiar el color o grosor */
+    margin-left: 15px; /* Espacio entre la línea y el texto */
+}
+  
+
+/* Hero Section (Imagen_Panama_Fondo) */
+/* Estilo para toda la sección */
+.Imagen_Panama_Fondo {
+    background-image: url('/Proyecto FINAL/Proyecto FINAL/Imagenes/Paisaje-Panama.jpg'); /* Ruta de la imagen */
+    background-size: cover; /* Asegura que la imagen cubra toda la sección */
+    background-position: center; /* Centra la imagen */
+    /*background-repeat: no-repeat; /* Evita repeticiones */
+    min-height: 878px; /* Altura mínima para que la sección sea visible */
+    width: 100%; /* Ocupa todo el ancho de la página */
+    display: flex; /* Activa flexbox para centrar contenido */
+    justify-content: center; /* Centra horizontalmente el contenido */
+    align-items: center; /* Centra verticalmente el contenido */
+    margin-top: 4%;
+    padding: 30px; /* Espaciado interno */
+    color: #ffffff; /* Color del texto */
+    text-align: center; /* Centra el texto dentro del contenedor */
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3); /* Sombra interior para un efecto más elegante */
+}
+
+/* Contenedor del contenido */
+.contenido-seccion {
+    max-width: 800px; /* Ancho máximo del contenido */
+    padding: 20px; /* Espaciado interno para el texto */
+    background: rgba(0, 0, 0, 0.5); /* Fondo semitransparente para resaltar el texto */
+    border-radius: 10px; /* Bordes redondeados */
+}
+
+
+.Imagen_Panama_Fondo h2 {
+    font-size: 2rem;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+
+
+/* Testimonials Section */
+.contenedor-carrusel-Opiniones {
+    position: relative;
+    padding: 20px;
+}
+
+.carrusel-track-Opiniones {
+    display: flex;
+    gap: 20px;
+    overflow: hidden;
+}
+
+.opiniones {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin: 15px;
+    text-align: left;
+}
+
+.icono-nombre-usuario {
+    width: 50px;
+    height: 50px;
+    background-color: #ddd;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+/* Services Section */
+/* Services Section */
+.contenedor-servicios {
+    display: flex;
+    justify-content: space-around;
+    padding: 2rem;
+    background-color: #eef2f7;
+    gap: 1.5rem;
+}
+
+.contenedor-servicios div {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.contenedor-servicios div:hover {
+    transform: translateY(-10px);
+}
+
+
+
+/* Estilos específicos para la página de búsqueda */
+ .search-container {
+    margin-top: 100px; /* Espacio para el navbar fijo */
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+
+.filter-section {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.filter-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.filter-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-item label {
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+}
+
+.filter-item select,
+.filter-item input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.search-button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    width: 200px;
+    margin: 0 auto;
+    display: block;
+}
+
+.search-button:hover {
+    background-color: #0056b3;
+}
+
+.results-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    min-height: 400px; /* Espacio para los resultados futuros */
+}
+
+
+
+
+/*detalles pagina*/
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.hero-section {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+
+.hero-content {
+    padding: 20px;
+}
+
+.hero-content h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.details-section, .description-section, .amenities-section, .booking-section {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.detail-item {
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+}
+
+.amenities-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    list-style: none;
+    margin-top: 20px;
+}
+
+.amenities-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.booking-section form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.booking-button {
+    background-color: rgba(0, 35, 82, 0.9);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.booking-button:hover {
+    background-color: #0056b3;
+}
+
+/* Contenedor principal */
+.results-grid {
+    display: flex; /* Usa flexbox */
+    flex-wrap: wrap; /* Permite que los elementos se ajusten a la siguiente fila si no caben */
+    justify-content: center; /* Centra los elementos en la fila */
+    gap: 20px; /* Espaciado entre los divs */
+    padding: 20px; /* Espaciado interno */
+    width: 100%; /* Ocupa todo el ancho disponible */
+}
+
+/* Tarjetas individuales */
+.alojamiento-card {
+    flex: 0 1 calc(25% - 20px); /* Ocupa 25% del ancho del contenedor menos el espacio del gap */
+    background-color: #fff; /* Fondo blanco */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    overflow: hidden; /* Oculta contenido desbordante */
+    display: flex;
+    flex-direction: column; /* Ordena verticalmente los elementos */
+    text-align: left; /* Alinea el texto a la izquierda */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animaciones */
+}
+
+/* Efecto hover */
+.alojamiento-card:hover {
+    transform: translateY(-5px); /* Eleva la tarjeta */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+}
+
+/* Imagen de la tarjeta */
+.alojamiento-card img {
+    width: 100%; /* Ocupa todo el ancho disponible */
+    height: 200px; /* Altura fija para las imágenes */
+    object-fit: cover; /* Ajusta la imagen sin deformarla */
+    border-bottom: 1px solid #ddd; /* Línea separadora */
+}
+
+/* Títulos */
+.alojamiento-card h3 {
+    font-size: 1.2rem;
+    margin: 10px 15px; /* Espaciado interno */
+    color: #333; /* Color oscuro */
+    font-weight: bold; /* Negrita */
+}
+
+/* Detalles */
+.alojamiento-card p {
+    margin: 5px 15px; /* Espaciado interno */
+    font-size: 0.9rem; /* Tamaño de texto */
+    color: #555; /* Color más claro */
+    line-height: 1.5; /* Espaciado entre líneas */
+}
+
+/* Resalta los títulos de los detalles */
+.alojamiento-card p strong {
+    color: #000; /* Color negro para destacar */
+}
+
+/* Responsividad */
+@media (max-width: 1024px) {
+    .alojamiento-card {
+        flex: 0 1 calc(33.33% - 20px); /* 3 tarjetas por fila */
+    }
+}
+
+@media (max-width: 768px) {
+    .alojamiento-card {
+        flex: 0 1 calc(50% - 20px); /* 2 tarjetas por fila */
+    }
+}
+
+@media (max-width: 480px) {
+    .alojamiento-card {
+        flex: 0 1 calc(100% - 20px); /* 1 tarjeta por fila */
+    }
+}
+
+#search-results{
+    display: flex; /* Usa flexbox */
+    flex-wrap: wrap; /* Permite que los elementos se ajusten a la siguiente fila si no caben */
+    justify-content: center; /* Centra los elementos en la fila */
+    gap: 20px; /* Espaciado entre los divs */
+    padding: 20px; /* Espaciado interno */
+    width: 100%; /* Ocupa todo el ancho disponible */
+}
+
+
+
+
+
+
+
+.hero-section {
+    margin: 20px;
+}
+
+.hero-image img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.carousel-section {
+    margin: 20px 0;
+}
+
+.carousel-section h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.collage-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+}
+
+.collage-item {
+    position: relative;
+}
+
+.collage-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.collage-item.large {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.collage-item img:hover {
+    transform: scale(1.01);
+}
+
+
+
+
+.search-icon {
+    position: fixed; /* Fija el ícono en un lugar visible */
+    bottom: 30px; /* Espaciado desde abajo */
+    right: 20px; /* Espaciado desde la derecha */
+    z-index: 1000; /* Asegura que esté sobre otros elementos */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el ícono */
+}
+
+.search-icon .search-image {
+    width: 40px; /* Ajusta el tamaño del ícono */
+    height: 40px;
+    border-radius: 15%; /* Hace que el ícono sea circular */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Agrega sombra para resaltar */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Efecto al pasar el ratón */
+}
+
+.search-icon .search-image:hover {
+    transform: scale(1.1); /* Amplía el ícono ligeramente */
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2); /* Aumenta la sombra */
+}
+
+.social-links-nav {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    
+}
+
+.social-links-nav img {
+    height: 30px;
+    width: 30px;
+    filter: invert(1);
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
