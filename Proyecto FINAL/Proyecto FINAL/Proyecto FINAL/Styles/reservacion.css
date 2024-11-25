@@ -1,0 +1,199 @@
+/* Tabla */
+#reservations-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#reservations-table thead {
+    background: linear-gradient(90deg, rgba(0, 35, 82, 0.9), #00bcd4);    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+#reservations-table th,
+#reservations-table td {
+    padding: 15px;
+    text-align: left;
+}
+
+#reservations-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#reservations-table tbody tr:hover {
+    background-color: #eef7ff;
+}
+
+/* Estilo para la información del alojamiento */
+.alojamiento-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.alojamiento-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 5px;
+    object-fit: cover;
+    border: 1px solid #ddd;
+}
+
+/* Botón Eliminar */
+.delete-btn {
+    background-color: #d41f22;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    margin: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.delete-btn:hover {
+    background-color: #d9363e;
+}
+
+.delete-btn:active {
+    background-color: #b82c30;
+}
+
+.delete-btn:focus {
+    outline: none;
+    box-shadow: 0 0 4px rgba(255, 77, 79, 0.8);
+}
+
+
+/* Botón Modificar */
+.edit-btn {
+    background-color: rgba(0, 35, 82, 0.9);
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.edit-btn:hover {
+    background-color: #084298;
+}
+
+.edit-btn:active {
+    background-color: #062c6f;
+}
+
+.edit-btn:focus {
+    outline: none;
+    box-shadow: 0 0 4px rgba(13, 110, 253, 0.8);
+}
+
+/* Estilos del Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    
+    background-color: #fff;
+    padding: 20px;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: slide-down 0.3s ease-out;
+    margin: 0 auto;
+    position: relative;
+}
+
+@keyframes slide-down {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-content h2 {
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    color: #333;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+button[type="submit"] {
+    background-color: #062c6f;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #084298;
+}
+
+button[type="submit"]:focus {
+    outline: none;
+    box-shadow: 0 0 4px rgba(13, 110, 253, 0.8);
+}
+
+/* Botón Cerrar Modal */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    color: #aaa;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: #000;
+}
+

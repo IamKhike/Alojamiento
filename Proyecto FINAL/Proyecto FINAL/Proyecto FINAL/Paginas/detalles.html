@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="" href="../Styles/Style.css">
+    <link rel="stylesheet" href="../Styles/FooterStyle.css">
+    <script src="../Scripts/auth.js"></script>
+    <script src="../Scripts/script.js"></script>
+    <!-- Flatpickr CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <!-- Flatpickr JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+
+    <title>Detalles del Alojamiento - Alojamientos Panamá</title>
+    
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="navbar-container">
+            <!-- Logo Section (izquierda) -->
+            <div class="navbar-logo">
+                <a href="PagInicio.html">
+                    <img src="/Proyecto FINAL/Proyecto FINAL/Imagenes/LogoOficial.png" alt="Logo" class="navbar-logo-img">
+                    <h1>Panama Lodge</h1>
+                </a>
+            </div>
+    
+            <!-- Menu Items (derecha) -->
+            <div class="navbar-menu">
+                <ul>
+                    <li><a href="PagInicio.html">Inicio</a></li>
+                    <li><a href="PagBuscarAlojamientos.html">Buscar Alojamientos</a></li>
+                    <li id="myReservations" style="display: none;"><a href="MisReservas.html">Mis reservas</a></li>
+                    <li><a href="SobreNosotros.html">Sobre Nosotros</a></li>
+                    <li id="user-display"></li>
+                </ul>
+                
+                <button class="navbar-button">
+                    <a href="InicioSesion.html">Iniciar sesión</a>
+                </button>
+                
+                <div class="search-icon">
+                    <a href="https://www.google.com" target="_blank" title="Ir a Google">
+                        <img src="../Imagenes/search.png" alt="Ícono de búsqueda" class="search-image">
+                    </a>
+                </div>
+                
+                <div class="social-links-nav">
+                    <a href="https://www.facebook.com/" target="_blank">
+                        <img src="/Proyecto FINAL/Proyecto FINAL/Imagenes/icon_Facebook.png" alt="Facebook">
+                    </a>
+                    <a href="https://www.twitter.com/" target="_blank">
+                        <img src="/Proyecto FINAL/Proyecto FINAL/Imagenes/icon-twitterX.png" alt="Twitter">
+                    </a>
+                    <a href="https://www.instagram.com/" target="_blank">
+                        <img src="/Proyecto FINAL/Proyecto FINAL/Imagenes/icon-Instagram.png" alt="Instagram">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav> 
+
+
+    <main class="container">
+        <section class="hero-section">
+            <div class="hero-image">
+                <img src="/api/placeholder/1200/400" alt="Vista del alojamiento">
+            </div>
+            <section class="carousel-section" style="margin-top: 4.5rem;">
+                <h2>Galería de Imágenes</h2>
+                <div class="collage-container">
+                    <div class="collage-item large">
+                        <img src="../Imagenes/collage2.jpg" alt="Imagen del alojamiento 1">
+                    </div>
+                    <div class="collage-item">
+                        <img src="../Imagenes/collage1.jpg" alt="Imagen del alojamiento 2">
+                    </div>
+                    <div class="collage-item">
+                        <img src="../Imagenes/collage3.jpg" alt="Imagen del alojamiento 3">
+                    </div>
+                    <div class="collage-item">
+                        <img src="../Imagenes/collage4.jpg" alt="Imagen del alojamiento 4">
+                    </div>
+                    <div class="collage-item">
+                        <img src="../Imagenes/collage5.jpg" alt="Imagen del alojamiento 5">
+                    </div>
+                    <div class="collage-item">
+                        <img src="../Imagenes/collage6.jpg" alt="Imagen del alojamiento 6">
+                    </div>
+                </div>
+            </section>
+        </section>
+        
+
+            <div class="hero-content">
+                <h1>Apartamento de Lujo en Panamá</h1>
+                <p class="location">
+                    <i class="fas fa-map-marker-alt"></i> Punta Pacífica, Ciudad de Panamá
+                </p>
+                <p class="price">$325 / noche</p>
+            </div>
+        </section>
+
+        <section class="details-section">
+            <h2>Detalles del Alojamiento</h2>
+            <div class="details-grid">
+                <div class="detail-item">
+                    <i class="fas fa-bed"></i>
+                    <h3>Habitaciones</h3>
+                    <p>3 habitaciones</p>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-bath"></i>
+                    <h3>Baños</h3>
+                    <p>2 baños</p>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-users"></i>
+                    <h3>Capacidad</h3>
+                    <p>4 huéspedes</p>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-parking"></i>
+                    <h3>Estacionamiento</h3>
+                    <p>2 espacios</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="description-section">
+            <h2>Descripción</h2>
+            <p>
+                Lujoso apartamento ubicado en el corazón financiero de la Ciudad de Panamá. Disfrute de impresionantes vistas a la bahía desde este moderno espacio que combina comodidad y elegancia. A pocos pasos de restaurantes exclusivos, centros comerciales y el paseo marítimo.
+            </p>
+        </section>
+
+        <section class="amenities-section">
+            <h2>Servicios y Comodidades</h2>
+            <ul class="amenities-list">
+                <li><i class="fas fa-wifi"></i> Wi-Fi de alta velocidad</li>
+                <li><i class="fas fa-tv"></i> Smart TV 4K</li>
+                <li><i class="fas fa-swimming-pool"></i> Piscina infinita</li>
+                <li><i class="fas fa-dumbbell"></i> Gimnasio 24/7</li>
+                <li><i class="fas fa-concierge-bell"></i> Servicio de conserjería</li>
+                <li><i class="fas fa-car"></i> Valet parking</li>
+            </ul>
+        </section>
+
+        <h2>Reserva este Alojamiento</h2>
+        <form id="booking-form">
+            <div class="form-group">
+                <label for="check-in">Fecha de Llegada</label>
+                <input type="date" id="check-in" required>
+            </div>
+            <div class="form-group">
+                <label for="check-out">Fecha de Salida</label>
+                <input type="date" id="check-out" required>
+            </div>
+            <div class="form-group">
+                <label for="guests">Número de Huéspedes</label>
+                <input type="number" id="guests" min="1" max="4" required>
+            </div>
+            <button type="submit" class="booking-button">Reservar Ahora</button>
+        </form>
+    
+        <!-- Div para mostrar el precio -->
+        <div id="calcular-precio" class="price-summary">
+            <h3>Resumen de la Reserva</h3>
+            <p>Precio por noche: $<span id="precio-por-noche">0</span></p>
+            <p>Número de noches: <span id="total-noches">0</span></p>
+            <p class="precio-total">Precio Total: $<span id="precio-total">0</span></p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="animated-bg"></div>
+        
+        <!-- Sección principal del footer -->
+        <div class="footer-content">
+            
+            <!-- Detalles de contacto -->
+            <div class="footer-section">
+                <h3>Detalles de contacto</h3>
+                <p>Tel: +507 1234-5678</p>
+                <p>Mov: +507 1234-5678</p>
+                <p>E-mail: info@tupagina.com</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/" target="_blank"><img src="/Proyecto FINAL/Proyecto FINAL/Imagenes/icon_Facebook.png" alt="Facebook"></a>
+                    <a href="https://www.twitter.com/" target="_blank"><img src="/Proyecto FINAL/Proyecto FINAL/Imagenes/icon-twitterX.png" alt="Twitter"></a>
+                    <a href="https://www.instagram.com/" target="_blank"><img src="/Proyecto FINAL/Proyecto FINAL/Imagenes/icon-Instagram.png" alt="Instagram"></a>
+                </div>
+            </div>
+    
+            <!-- Navegación -->
+            <div class="footer-section">
+                <h3>Navegación</h3>
+                <ul class="footer-links">
+                    <li><a href="PagInicio.html">Inicio</a></li>
+                    <li><a href="PagBuscarAlojamientos.html">Buscar alojamiento</a></li>
+                    <li><a href="SobreNosotros.html">Contáctanos</a></li>
+                </ul>
+            </div>
+    
+            <!-- Explora -->
+            <div class="footer-section">
+                <h3>Explora</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Destinos Únicos</a></li>
+                    <li><a href="#">Experiencias VIP</a></li>
+                    <li><a href="#">Alojamientos Premium</a></li>
+                    <li><a href="#">Aventuras Locales</a></li>
+                </ul>
+            </div>
+    
+    
+            <!-- Contacto y Newsletter -->
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Soporte 24/7</a></li>
+                    <li><a href="#">Centro de Ayuda</a></li>
+                    <li><a href="#">Oficinas Locales</a></li>
+                    <li><a href="#">Trabaja con Nosotros</a></li>
+                </ul>
+            </div>
+    
+            <!-- Nuestros Aliados -->
+            <div class="footer-section">
+                <h3>Nuestros Aliados</h3>
+                <p>Colaboramos con una variedad de alojamientos en todo Panamá.</p>
+            </div>
+    
+            <!-- Más información -->
+            <div class="footer-section">
+                <h3>Más información</h3>
+                <p>Nuestro equipo está listo para ayudarte a encontrar el alojamiento ideal en Panamá. Contamos con una amplia selección de opciones para que elijas.</p>
+            </div>
+        </div>
+    
+        <!-- Barra inferior -->
+        <div class="bottom-bar">
+            <p>© 2024 Panama Lodge. Todos los derechos reservados.</p>
+        </div>
+    </footer>            
+
+    <script src="../Scripts/ParaReservar.js"></script>
+
+</body>
+</html>

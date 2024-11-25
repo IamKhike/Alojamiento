@@ -1,0 +1,205 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  footer {
+    background: linear-gradient(135deg, #001f3f, #004d66);
+
+
+    color: rgb(0, 0, 0);
+    padding: 6rem 0;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 -20px 60px rgba(0,0,0,0.1);
+  }
+
+  .footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 3rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 4rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer-section {
+    position: relative;
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 16px;
+    background: rgba(252, 252, 252);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .footer-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  }
+
+  .footer-section h3 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    position: relative;
+    display: inline-block;
+    background: linear-gradient(90deg, rgba(0, 35, 82, 0.9), #00bcd4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+  }
+
+  .footer-section h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 30px;
+    height: 3px;
+    background: linear-gradient(90deg, rgba(0, 35, 82, 0.9), #00bcd4);
+    border-radius: 2px;
+    transition: width 0.4s ease;
+  }
+
+  .footer-section:hover h3::after {
+    width: 100%;
+  }
+
+  .footer-links {
+    list-style: none;
+  }
+
+  .footer-links li {
+    margin-bottom: 1.2rem;
+  }
+
+  .footer-links a {
+    color: #000000;
+    text-decoration: none;
+    transition: all 0.4s ease;
+    position: relative;
+    padding-left: 1.8rem;
+    font-size: 1.1rem;
+  }
+
+  .footer-links a::before {
+    content: '✦';
+    position: absolute;
+    left: 0;
+    opacity: 0;
+    transition: all 0.4s ease;
+    color: rgba(0, 35, 82, 0.9)
+  }
+
+  .footer-links a:hover {
+    color: #124b92;
+    padding-left: 2.5rem;
+    text-shadow: 0 0 20px rgba(0, 35, 82, 0.9)
+  }
+
+  .footer-links a:hover::before {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+
+  .social-links {
+    margin-top: 2.5rem;
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .social-links a {
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    border: 2px solid #020202;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #60a5fa;
+    text-decoration: none;
+    transition: all 0.4s ease;
+    font-size: 1.2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .social-links a::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: translateY(100%);
+    transition: transform 0.4s ease;
+    z-index: -1;
+    
+  }
+
+  .social-links a:hover::before {
+    transform: translateY(0);
+  }
+
+  .social-links a:hover {
+    color: white;
+    transform: translateY(-5px) rotate(360deg);
+    box-shadow: 0 10px 20px rgba(96, 165, 250, 0.3);
+  }
+
+  .social-links img{
+    width: 100%;
+    height: 100%;
+    filter: invert(1);
+    
+  }
+
+  .animated-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.05;
+    overflow: hidden;
+  }
+
+  .animated-bg::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 60px,
+      #60a5fa 60px,
+      #60a5fa 120px
+    );
+    animation: move 25s linear infinite;
+  }
+
+  @keyframes move {
+    0% {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
+  }
+
+  
+  .bottom-bar {
+    margin-top: 5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    text-align: center;
+    color: #94a3b8;
+  }
+
+  .bottom-bar p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
